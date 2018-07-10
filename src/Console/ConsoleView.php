@@ -14,7 +14,8 @@ use CL\Site\Util\TopologicalSort;
 
 class ConsoleView extends View {
 	public function __construct(Site $site) 	{
-		parent::__construct($site, ['at-least'=>\CL\Users\User::STAFF,
+		parent::__construct($site, [
+			'at-least'=>['console-access', \CL\Users\User::STAFF],
 			'resource'=>'Site Console']);
 
 		$this->title = "Site Console";
