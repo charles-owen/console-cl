@@ -45,15 +45,15 @@ Console.components.addOption({
 
 
 Console.start = function(site) {
-    if(site === undefined) {
-        site = Site;
-    }
+        if(site === undefined) {
+            site = Site;
+        }
 
     this.components.sort();
     this.components.start(this);
 
     // Get the installed user
-    let user = site.store.state.users.user;
+    let user = site.store.state.user.user;
 
     //
     // Configure the template, setting up the top-level menus

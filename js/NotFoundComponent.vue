@@ -1,8 +1,6 @@
 <template>
-<div id="console-main">
-  <div class="content">
+<div class="content">
   <p>Page does not exist...</p>
-  </div>
 </div>
 </template>
 
