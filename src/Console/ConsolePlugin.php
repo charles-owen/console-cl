@@ -16,6 +16,11 @@ class ConsolePlugin extends \CL\Site\Components\Plugin {
 	public function install(Site $site) {
 		$site->install("console", new ConsoleConfig());
 
+		$site->addRoute(['console', '*'], function(Site $site, Server $server, array $params, array $properties, $time) {
+			$view = new ConsoleView($site);
+			return $view->vue('console');
+		});
+
 	}
 
 }

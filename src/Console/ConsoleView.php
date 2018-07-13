@@ -16,7 +16,7 @@ class ConsoleView extends View {
 	public function __construct(Site $site) 	{
 		parent::__construct($site, [
 			'at-least'=>['console-access', \CL\Users\User::STAFF],
-			'resource'=>'Site Console']);
+			'resource'=>'console']);
 
 		$this->title = "Site Console";
 		$this->addJS('users');

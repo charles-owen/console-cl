@@ -1,6 +1,7 @@
 <?php
 /**
- * @file Site configuration object for the Site Console system
+ * @file
+ * Site configuration object for the Site Console system
  */
 
 namespace CL\Console;
