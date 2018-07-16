@@ -1,0 +1,17 @@
+{
+  "name": "console-cl",
+  "version": "0.0.1",
+  "description": "CourseLib Website base management console components",
+  "main": "js/Console.js",
+  "keywords": [
+    "Education",
+    "LTI"
+  ],
+  "author": "Charles B. Owen",
+  "license": "MIT",
+  "dependencies": {
+    "users-cl": "^0.0.1",
+    "site-cl": "^0.0.1",
+    "course-cl": "^0.0.1"
+  }
+}

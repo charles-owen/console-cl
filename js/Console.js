@@ -156,7 +156,7 @@ Console.start = function(site) {
             },
             setTitle: function(title) {
                 this.title = title;
-                document.title = title;
+                document.title = Site.siteName + ' ' + title;
             }
         },
         created() {

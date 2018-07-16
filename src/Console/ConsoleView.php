@@ -30,10 +30,10 @@ class ConsoleView extends View {
 		$site->console->execClosures($this);
 
 		$userjson = json_encode($site->users->user->data(true));
+		$this->addJSON('cl-user', $userjson);
+
 		$this->script = <<<SCRIPT
-Users.user=$userjson;
 Console.start();
 SCRIPT;
-
 	}
 }
