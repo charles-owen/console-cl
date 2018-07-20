@@ -13,6 +13,22 @@ use CL\Site\System\Server;
  * Plugin class for the site console
  */
 class ConsolePlugin extends \CL\Site\Components\Plugin {
+	/**
+	 * A tag that represents this plugin
+	 * @return string A tag like 'course', 'users', etc.
+	 */
+	public function tag() {return 'console';}
+
+	/**
+	 * Return an array of tags indicating what plugins this one is dependent on.
+	 * @return array of tags this plugin is dependent on
+	 */
+	public function depends() {return ['users'];}
+
+	/**
+	 * Install the console plugin
+	 * @param Site $site The Site object
+	 */
 	public function install(Site $site) {
 		$site->install("console", new ConsoleConfig());
 

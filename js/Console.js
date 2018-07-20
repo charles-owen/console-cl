@@ -42,13 +42,21 @@ Console.components.addOption({
     ]
 });
 
+function actualStart(site) {
 
+}
 
 Console.start = function(site) {
-        if(site === undefined) {
-            site = Site;
-        }
+    if (site === undefined) {
+        site = Site;
+    }
 
+    site.ready(() => {
+        this.actualStart(site);
+    });
+}
+
+Console.actualStart = function(site) {
     this.components.sort();
     this.components.start(this);
 
