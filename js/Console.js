@@ -68,7 +68,7 @@ Console.actualStart = function(site) {
     //
 
     let template = `<div id="console"><site-header :title="title">
-<nav><ul>
+<nav><ul class="dividers">
 <li><a href="${site.root}"><span class="home">Home</span></a></li>`;
 
     this.components.pages.forEach((page) => {
