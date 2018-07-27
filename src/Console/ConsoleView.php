@@ -31,9 +31,5 @@ class ConsoleView extends View {
 
 		$userjson = json_encode($site->users->user->data(true));
 		$this->addJSON('cl-user', $userjson);
-
-		$this->script = <<<SCRIPT
-Console.start();
-SCRIPT;
 	}
 }

@@ -10,7 +10,7 @@ export let ConsoleComponent = function(console, site, page) {
        this.template += `<h2>${section.title}</h2><ul>`;
 
        section.options.forEach((option) => {
-            this.template += `<li><router-link to="${site.root}cl/console${option.route}">${option.title}</router-link></li>`;
+            this.template += `<li><router-link to="${site.root}/cl/console${option.route}">${option.title}</router-link></li>`;
        });
 
        this.template += '</ul>';
@@ -20,9 +20,9 @@ export let ConsoleComponent = function(console, site, page) {
 
     this.mounted = function() {
         if(page.title === 'Main') {
-            this.$parent.setTitle(console.title);
+            this.$parent.setTitle('');
         } else {
-            this.$parent.setTitle(console.title + ': ' + page.title);
+            this.$parent.setTitle(': ' + page.title);
         }
 
     }

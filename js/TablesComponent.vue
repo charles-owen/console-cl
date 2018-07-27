@@ -49,7 +49,7 @@ export default {
         }
     },
     mounted() {
-        this.$parent.setTitle(Console.title + ': Database Tables');
+        this.$parent.setTitle(': Database Tables');
         Console.tables.tables.sort(function(a, b) {
             return a.order - b.order;
         })

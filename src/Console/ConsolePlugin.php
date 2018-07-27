@@ -46,7 +46,7 @@ class ConsolePlugin extends \CL\Site\Plugin {
 			$router = $object;
 			$router->addRoute(['console', '*'], function(Site $site, Server $server, array $params, array $properties, $time) {
 				$view = new ConsoleView($site);
-				return $view->vue('console');
+				return $view->vue('cl-console');
 			});
 		}
 	}
