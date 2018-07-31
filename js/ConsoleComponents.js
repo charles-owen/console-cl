@@ -83,6 +83,16 @@ export let ConsoleComponents = function() {
         return this.pages;
     }
 
+    let routes = [];
+
+    this.addRoute = function(route) {
+        routes.push(route);
+    }
+
+    this.getRoutes = function() {
+        return routes;
+    }
+
     /**
      * Given a list of items of the form {title: 'title', order: 'order'},
      * find an item with a given title.

@@ -85,6 +85,22 @@ ConsoleFactory.create = function(site) {
         // Set up the routes
         //
         const routes = [];
+        for(const route of this.components.getRoutes()) {
+            let robj = {
+                path: site.root + '/cl/console' + route.route,
+                component: route.component
+            };
+
+            if(route.props !== undefined) {
+                robj.props = route.props;
+            }
+
+            if(route.name !== undefined) {
+                robj.name = route.name;
+            }
+            routes.push(robj);
+        }
+
         this.components.pages.forEach((page) => {
             if(user.atLeast(page.minimumRole(user))) {
                 let component = new ConsoleComponent(this, site, page);
