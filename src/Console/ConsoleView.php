@@ -8,7 +8,7 @@
 namespace CL\Console;
 
 use CL\Site\Site;
-use CL\Site\View;
+use CL\Users\View;
 use CL\Site\Util\TopologicalSort;
 
 /**
@@ -29,8 +29,5 @@ class ConsoleView extends View {
 		$this->addJS('console');
 
 		$site->amend($this);
-
-		$userjson = json_encode($site->users->user->data(true));
-		$this->addJSON('cl-user', $userjson);
 	}
 }

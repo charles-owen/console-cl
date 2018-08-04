@@ -55,13 +55,12 @@ ConsoleFactory.create = function(site) {
         // Get the installed user
         let user = site.store.state.user.user;
 
-
         //
         // Configure the template, setting up the top-level menus
         //
 
         let template = `<div id="console"><site-header :title="title">
-<nav><ul class="dividers">
+<nav><div><ul class="dividers">
 <li><a href="${site.root}/"><span class="home">Home</span></a></li>`;
 
         this.components.pages.forEach((page) => {
@@ -70,7 +69,7 @@ ConsoleFactory.create = function(site) {
             }
         });
 
-        template += `</ul></nav>
+        template += `</ul></div></nav>
 </site-header>`;
 
         this.components.main.forEach((component) => {

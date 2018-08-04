@@ -14,3 +14,4 @@ export {components};
 const tables = Console.tables;
 export {tables};
 
+console.log('Console');

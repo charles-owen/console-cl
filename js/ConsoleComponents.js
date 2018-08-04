@@ -89,6 +89,12 @@ export let ConsoleComponents = function() {
         routes.push(route);
     }
 
+    this.addRoutes = function(addroutes) {
+        for(let route of addroutes) {
+            routes.push(route)
+        }
+    }
+
     this.getRoutes = function() {
         return routes;
     }
