@@ -9,6 +9,7 @@ export let ConsolePage = function(page) {
     this.title = page.title;
     this.route = page.route;
     this.order = page.order;
+    this.component = page.component;
 
     this.sections = [];
 

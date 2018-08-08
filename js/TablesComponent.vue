@@ -1,5 +1,4 @@
 <template>
-<div id="management">
   <div class="content">
   <h2>Database Tables Management</h2>
     <p class="center red"><em>Use with caution!</em></p>
@@ -11,7 +10,6 @@
       <a @click.prevent="dropCreate(table)">drop-and-create</a></li>
     </ul>
   </div>
-</div>
 </template>
 
 <script>

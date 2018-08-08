@@ -1,5 +1,11 @@
 /**
  * @file Management of all console components
+ *
+ * Components are:
+ * start scripts run when the console is started (addStart)
+ * main Components added to every page (addMainComponent)
+ * options Adds top-level menu options and options on pages (addOption)
+ * routes Adds routes to the console directory (addRoute, addRoutes)
  */
 
 import {ConsolePage} from './ConsolePage.js';
@@ -24,18 +30,78 @@ export let ConsoleComponents = function() {
     //
     // Any components to add to the main page (every page)
     //
+    // The course subsystem uses this to add a bar the selects
+    // the course section right below the menu bar.
+    //
     this.main = [];
 
     this.addMainComponent = function(tag, component, order) {
-        this.main.push({
-            tag: tag,
-            component: component,
-            order: order
-        });
+        // this.main.push({
+        //     tag: tag,
+        //     component: component,
+        //     order: order
+        // });
     }
 
+    this.nav2 = [];
+
+    this.addNav2 = function(component, order) {
+        this.nav2.push({
+            component: component,
+            order: order
+        })
+
+        this.nav2.sort((a, b) => {
+            return a.order - b.order;
+        });
+
+        return component;
+    }
+
+    this.removeNav2 = function(vue, component) {
+        console.log(component);
+        if(Array.isArray(component)) {
+            for(let c of component) {
+                this.removeNav2(vue, c);
+            }
+
+            return;
+        }
+
+        for(let i=0; i<this.nav2.length; i++) {
+            if(this.nav2[i].component === component) {
+                console.log('found it');
+                this.nav2.splice(i, 1);
+                vue.$set(this, 'nav2', this.nav2);
+                return;
+            }
+        }
+    }
+
+    this.addNav2Link = function(vue, name, order, click) {
+        let component = {
+            template: `<a @click.prevent="click">${name}</a>`,
+            methods: {
+                click() {
+                    click();
+                }
+            }
+        };
+        this.addNav2(component, order);
+
+        this.nav2.sort((a, b) => {
+            return a.order - b.order;
+        });
+
+        vue.$set(this, 'nav2', this.nav2);
+        return component;
+    }
+
+    this.nav2right = null;
+    this.nav2left = null;
+
     //
-    // Console options are menu options in the course console.
+    // Console options are menu options in the site console.
     // This is how the top-level menus, sections, and links
     // are defined.
     //
