@@ -10,6 +10,7 @@ export let ConsolePage = function(page) {
     this.route = page.route;
     this.order = page.order;
     this.component = page.component;
+    this.atLeast = page.atLeast !== undefined ? page.atLeast : null;
 
     this.sections = [];
 
@@ -50,8 +51,8 @@ export let ConsolePage = function(page) {
     }
 
     this.minimumRole = function(user) {
-        let roleLeast = null;
-        let priorityLeast = 1000000;
+        let roleLeast = this.atLeast;
+        let priorityLeast = this.atLeast !== null ? user.getRolePriority(roleLeast) : 100000;
 
         this.sections.forEach((section) => {
             let sectionLeast = section.minimumRole(user);
