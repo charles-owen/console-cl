@@ -19,7 +19,9 @@ nav2 menu support with automatic removal.
            * @param closure Function to call when selected.
            */
           addNav2(title, order, closure) {
-              this.components1.push(Console.components.addNav2Link(this, title, order, closure));
+              const item = Console.components.addNav2Link(this, title, order, closure);
+              this.components1.push(item);
+              return item;
           },
           /**
            * Add an option to the nav2 menu that is a router link
@@ -31,9 +33,18 @@ nav2 menu support with automatic removal.
               this.addNav2(title, order, () => {
                   this.$router.push(Site.root + link);
               });
+          },
+
+          removeNav2(item) {
+              let i = this.components1.indexOf(item);
+              if(i >= 0) {
+                  this.components1.splice(i, 1);
+              }
+
+              Console.components.removeNav2(this, item);
           }
       },
-      mounted() {
+      created() {
           this.components1 = [];
 
       },

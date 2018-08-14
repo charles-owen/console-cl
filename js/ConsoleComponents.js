@@ -59,7 +59,6 @@ export let ConsoleComponents = function() {
     }
 
     this.removeNav2 = function(vue, component) {
-        console.log(component);
         if(Array.isArray(component)) {
             for(let c of component) {
                 this.removeNav2(vue, c);
