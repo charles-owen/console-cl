@@ -78,18 +78,22 @@ export const Console = function(site) {
                 page.sections.forEach((section) => {
                     section.options.forEach((option) => {
                         if(user.atLeast(option.atLeast)) {
-                            option.routes.forEach((route) => {
-                                let robj = {
-                                    path: site.root + '/cl/console' + route.route, component: route.component
-                                };
-                                if(route.props !== undefined) {
-                                    robj.props = route.props;
-                                }
-                                if(route.name !== undefined) {
-                                    robj.name = route.name;
-                                }
-                                routes.push(robj)
-                            })
+
+                            if(option.routes !== undefined) {
+                                option.routes.forEach((route) => {
+                                    let robj = {
+                                        path: site.root + '/cl/console' + route.route, component: route.component
+                                    };
+                                    if(route.props !== undefined) {
+                                        robj.props = route.props;
+                                    }
+                                    if(route.name !== undefined) {
+                                        robj.name = route.name;
+                                    }
+                                    routes.push(robj)
+                                })
+                            }
+
 
                         }
                     })
@@ -142,12 +146,10 @@ export const Console = function(site) {
                  * the child Vue's using this.$parent.setTitle('')
                  * @param title Title to set
                  */
-                setTitle: function(title) {
+                setTitle(title) {
                     this.title = siteTitle + title;
                     document.title = Site.info.siteName + ' ' + siteTitle + title;
                 }
-            },
-            created() {
             },
             mounted() {
                 this.setTitle('');

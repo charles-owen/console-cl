@@ -18,7 +18,7 @@ import Dialog from 'dialog-cl';
 export default {
     data: function() {
         return {
-            tables: Console.tables.tables,
+            tables: Site.Console.tables.tables,
             create: function(table, drop) {
                 Site.api.post(table.api, {drop: drop ? 'yes' : 'no'})
                     .then((response) => {
@@ -48,7 +48,7 @@ export default {
     },
     mounted() {
         this.$parent.setTitle(': Database Tables');
-        Console.tables.tables.sort(function(a, b) {
+        Site.Console.tables.tables.sort(function(a, b) {
             return a.order - b.order;
         })
     }
