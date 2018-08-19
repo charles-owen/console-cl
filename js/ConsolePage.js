@@ -5,7 +5,7 @@
 
 import {ConsoleSection} from './ConsoleSection.js';
 
-export let ConsolePage = function(page) {
+export let ConsolePage = function(site, page) {
     this.title = page.title;
     this.route = page.route;
     this.order = page.order;
@@ -24,7 +24,7 @@ export let ConsolePage = function(page) {
         if(section !== null) {
             section.add(option);
         } else {
-            let section = new ConsoleSection(option.section);
+            let section = new ConsoleSection(site, option.section);
             this.sections.push(section);
             section.add(option);
         }
@@ -50,8 +50,20 @@ export let ConsolePage = function(page) {
         return null;
     }
 
+	/**
+     * Is this page available to this user?
+	 * @param user User to test
+	 */
+	this.available = function(user) {
+        return user.atLeast(this.minimumRole(user));
+    }
+
     this.minimumRole = function(user) {
         let roleLeast = this.atLeast;
+        if(roleLeast === Object(roleLeast)) {
+            roleLeast = site.permissions.atLeast(roleLeast.tag, roleLeast.default);
+        }
+
         let priorityLeast = this.atLeast !== null ? user.getRolePriority(roleLeast) : 100000;
 
         this.sections.forEach((section) => {

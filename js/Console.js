@@ -17,7 +17,7 @@ export const Console = function(site) {
 
     // The console components are the installed components
     // like the users editor or table creation.
-    this.components = new ConsoleComponents();
+    this.components = new ConsoleComponents(site);
 
     // The console tables component keeps track of the
     // database tables we may need to create
@@ -35,7 +35,7 @@ export const Console = function(site) {
         //
 
         let template = `<div class="cl-console"><site-header :title="title">
-<console-nav :console="console"></console-nav>
+<console-nav :console="console" :user="user"></console-nav>
 </site-header>`;
 
         this.components.main.forEach((component) => {
@@ -69,7 +69,7 @@ export const Console = function(site) {
         this.components.pages.forEach((page) => {
             if(user.atLeast(page.minimumRole(user))) {
                 let component = page.component !== undefined ? page.component :
-                    new ConsoleComponent(this, site, page);
+                    new ConsoleComponent(this, site, user, page);
                 routes.push({
                     path: site.root + '/cl/console' + page.route, component: component
                 })
@@ -77,7 +77,7 @@ export const Console = function(site) {
 
                 page.sections.forEach((section) => {
                     section.options.forEach((option) => {
-                        if(user.atLeast(option.atLeast)) {
+                        if(option.available(user)) {
 
                             if(option.routes !== undefined) {
                                 option.routes.forEach((route) => {
@@ -130,7 +130,8 @@ export const Console = function(site) {
             data: function() {
                 return {
                     title: siteTitle,
-                    console: Console
+                    console: Console,
+                    user: user
                 }
             },
             props: {
@@ -151,7 +152,7 @@ export const Console = function(site) {
                     document.title = Site.info.siteName + ' ' + siteTitle + title;
                 }
             },
-            mounted() {
+            created() {
                 this.setTitle('');
                 new StickyNav('div.cl-console nav');
             }

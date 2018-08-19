@@ -3,14 +3,16 @@
  * Console section: These are the <h2> page sections
  */
 
-export let ConsoleSection = function(section) {
+import {ConsoleSectionOption} from './ConsoleSectionOption';
+
+export let ConsoleSection = function(site, section) {
     this.title = section.title;
     this.order = section.order;
 
     this.options = [];
 
     this.add = function(option) {
-        this.options.push(option);
+        this.options.push(new ConsoleSectionOption(site, option));
     }
 
     this.sort = function() {
@@ -19,9 +21,13 @@ export let ConsoleSection = function(section) {
         });
     }
 
+    this.available = function(user) {
+        return user.atLeast(this.minimumRole(user));
+    }
+
     /**
      * Determine the minimum role for all options
-     * in this section.
+     * in this section so we know if we can show the section.
      * @param user A user, so we can know what the possible roles are
      * @returns {string} Role
      */
@@ -34,9 +40,14 @@ export let ConsoleSection = function(section) {
         let priorityLeast = 1000000;
 
         this.options.forEach((option) => {
-            let priority = user.getRolePriority(option.atLeast);
+	        let role = option.atLeast;
+	        if(role === Object(role)) {
+		        role = site.permissions.atLeast(role.tag, role.default);
+	        }
+
+            let priority = user.getRolePriority(role);
             if(priority !== 0 && priority < priorityLeast) {
-                roleLeast = option.atLeast;
+                roleLeast = role;
                 priorityLeast = priority;
             }
         });

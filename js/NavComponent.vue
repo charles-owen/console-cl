@@ -3,7 +3,7 @@
     <div>
       <ul class="dividers">
         <li><a :href="homeLink"><span class="home">Home</span></a></li>
-        <li v-for="page in console.components.pages">
+        <li v-for="page in console.components.pages" v-if="page.available(user)">
           <router-link :to="pageLink(page)">{{page.title}}</router-link>
         </li>
       </ul>
@@ -27,7 +27,7 @@
 
 <script>
   export default {
-      props: ['console'],
+      props: ['console', 'user'],
       data: function() {
           return {
               homeLink: Site.root + '/'

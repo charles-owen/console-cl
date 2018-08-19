@@ -10,7 +10,7 @@
 
 import {ConsolePage} from './ConsolePage.js';
 
-export let ConsoleComponents = function() {
+export let ConsoleComponents = function(site) {
 
     //
     // Start scripts are run when the console is started
@@ -123,7 +123,7 @@ export let ConsoleComponents = function() {
             if(page !== null) {
                 page.add(option);
             } else {
-                let page = new ConsolePage(option.page);
+                let page = new ConsolePage(site, option.page);
                 this.pages.push(page);
                 page.add(option);
             }

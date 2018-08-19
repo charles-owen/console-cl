@@ -28,6 +28,8 @@ class ConsoleView extends View {
 		$this->addJS('users');
 		$this->addJS('console');
 
+		$this->addJSON('cl-permissions', json_encode($site->users->permissions));
+
 		$site->amend($this);
 	}
 }
