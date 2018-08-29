@@ -154,7 +154,9 @@ export const Console = function(site) {
             },
             created() {
                 this.setTitle('');
-                new StickyNav('div.cl-console nav');
+            },
+            mounted() {
+	            new StickyNav('div.cl-console nav');
             }
         })
     }
