@@ -104,10 +104,10 @@ export const Console = function(site) {
 
         routes.push({ path: '*', component: NotFoundComponent });
 
-        const Header = Site.info.header.component();
-        const Footer = Site.info.footer.component();
+        const Header = site.info.header.component();
+        const Footer = site.info.footer.component();
 
-        const router = new Site.VueRouter({
+        const router = new site.VueRouter({
             routes: routes,
             mode: 'history'
         })
@@ -118,13 +118,14 @@ export const Console = function(site) {
             'console-nav': NavComponent
         }
 
-        let store = Site.store;
+        let store = site.store;
         let siteTitle = this.title;
         let Console = this;
 
         this.masterVue = new Site.Vue({
             el: element,
-            store,
+            store,      // Inject the store
+            site,       // Inject site, so $site is available for all children
             template: template,
             router,
             data: function() {
