@@ -23,6 +23,7 @@ nav2 menu support with automatic removal.
               this.components1.push(item);
               return item;
           },
+
           /**
            * Add an option to the nav2 menu that is a router link
            * @param title Title of the option to add.

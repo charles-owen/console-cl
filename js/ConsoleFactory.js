@@ -12,6 +12,9 @@ export const ConsoleFactory = function() {
 ConsoleFactory.create = function(site) {
     let siteConsole = new Console(site);
 
+    // Save as a site property
+    site.console = siteConsole;
+
     // Add standard options
     siteConsole.components.addOption({
         atLeast: Users.User.STAFF,

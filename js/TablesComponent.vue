@@ -18,23 +18,23 @@ import Dialog from 'dialog-cl';
 export default {
     data: function() {
         return {
-            tables: Site.Console.tables.tables,
+            tables: this.$site.console.tables.tables,
             create: function(table, drop) {
-                Site.api.post(table.api, {drop: drop ? 'yes' : 'no'})
+                this.$site.api.post(table.api, {drop: drop ? 'yes' : 'no'})
                     .then((response) => {
                         if(!response.hasError()) {
                             if(drop) {
-                                Site.toast(this, table.title + ' tables dropped and recreated');
+                                this.$site.toast(this, table.title + ' tables dropped and recreated');
                             } else {
-                                Site.toast(this, table.title + ' tables created');
+	                            this.$site.toast(this, table.title + ' tables created');
                             }
                         } else {
-                            Site.toast(this, response);
+	                        this.$site.toast(this, response);
                         }
 
                     })
                     .catch((error) => {
-                        Site.toast(this, error);
+	                    this.$site.toast(this, error);
                     });
             },
             dropCreate: function(table) {
@@ -48,7 +48,7 @@ export default {
     },
     mounted() {
         this.$parent.setTitle(': Database Tables');
-        Site.Console.tables.tables.sort(function(a, b) {
+	      this.$site.console.tables.tables.sort(function(a, b) {
             return a.order - b.order;
         })
     }
