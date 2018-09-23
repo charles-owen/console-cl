@@ -14,11 +14,20 @@
       "CL\\Console\\": "src/Console"
     }
   },
+  "require": {
+    "cl/site": "^2.0",
+    "cl/users": "^2.0"
+  },
   "repositories": [
     {
       "type": "vcs",
       "url": "https://github.com/charles-owen/console-cl.git"
     }
-  ]
+  ],
+  "extra": {
+    "branch-alias": {
+      "dev-master": "2.0.x-dev"
+    }
+  }
 }
 
