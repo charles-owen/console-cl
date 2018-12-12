@@ -1,11 +1,10 @@
-/**
- * @file
- * Factory class to create the Console object
- */
-
 import {Console} from './Console';
 import TablesComponent from './TablesComponent.vue';
 
+/**
+ * Factory to create the Console object
+ * @constructor
+ */
 export const ConsoleFactory = function() {
 }
 

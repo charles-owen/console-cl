@@ -19,7 +19,7 @@ nav2 menu support with automatic removal.
            * @param closure Function to call when selected.
            */
           addNav2(title, order, closure) {
-              const item = Site.Console.components.addNav2Link(this, title, order, closure);
+              const item = this.$site.console.components.addNav2Link(this, title, order, closure);
               this.components1.push(item);
               return item;
           },
@@ -42,15 +42,14 @@ nav2 menu support with automatic removal.
                   this.components1.splice(i, 1);
               }
 
-              Site.Console.components.removeNav2(this, item);
+	          this.$site.console.components.removeNav2(this, item);
           }
       },
       created() {
-          this.components1 = [];
-
+      	this.components1 = [];
       },
       beforeDestroy() {
-          Site.Console.components.removeNav2(this, this.components1);
+      	this.$site.console.components.removeNav2(this, this.components1);
       }
   }
 </script>

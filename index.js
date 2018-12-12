@@ -1,10 +1,10 @@
 import {ConsoleFactory} from './js/ConsoleFactory';
 
-const Console = ConsoleFactory.create(Site.Site);
+const Console = ConsoleFactory.create(Site.site);
 export {Console};
 
 // We set it in the global Site object
-Site.Console = Console;
+//Site.Console = Console;
 
 //const components = Console.components;
 //export {components};
