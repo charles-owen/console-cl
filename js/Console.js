@@ -8,7 +8,6 @@ import {ConsoleTables} from './ConsoleTables'
 import {ConsoleComponent} from './ConsoleComponent';
 import NavComponent from './NavComponent.vue';
 import NotFoundComponent from './NotFoundComponent.vue';
-import {StickyNav} from 'site-cl/js/Util/StickyNav';
 
 export const Console = function(site) {
 
@@ -122,7 +121,7 @@ export const Console = function(site) {
         let siteTitle = this.title;
         let Console = this;
 
-        this.masterVue = new Site.Vue({
+        this.masterVue = new site.Vue({
             el: element,
             store,      // Inject the store
             site,       // Inject site, so $site is available for all children
@@ -157,7 +156,7 @@ export const Console = function(site) {
                 this.setTitle('');
             },
             mounted() {
-	            new StickyNav('div.cl-console nav');
+	            new site.StickyNav('div.cl-console nav');
             }
         })
     }
