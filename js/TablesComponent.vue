@@ -27,7 +27,7 @@
 </template>
 
 <script>
-const Dialog = Site.Dialog;
+import Dialog from 'dialog-cl';
 
 export default {
     data: function() {
