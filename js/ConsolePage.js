@@ -1,20 +1,35 @@
+import {ConsoleSection} from './ConsoleSection';
+
 /**
- * @file
  * Represents a console page in the ConsoleComponents collection
+ * @param {Site} site The site object
+ * @param page Object representation of page as passed from the server
+ * @constructor
  */
-
-import {ConsoleSection} from './ConsoleSection.js';
-
 export let ConsolePage = function(site, page) {
+    /** Page title */
     this.title = page.title;
+
+    /** Router to get to this page */
     this.route = page.route;
+
+    /** Order of page presentation in a component menu */
     this.order = page.order;
+
+    /** The page component */
     this.component = page.component;
+
+    /** Optional minimum user role to access the page */
     this.atLeast = page.atLeast !== undefined ? page.atLeast : null;
 
+    /** Page sections */
     this.sections = [];
 
-    this.add = function(option) {
+	/**
+     * Add a section to the page.
+	 * @param option
+	 */
+	this.add = function(option) {
         // Does the item have a section?
         if(option.section === undefined) {
             return;
@@ -30,7 +45,10 @@ export let ConsolePage = function(site, page) {
         }
     }
 
-    this.sort = function() {
+	/**
+     * Sort page sections into order
+	 */
+	this.sort = function() {
         this.sections.sort(function(a, b) {
             return a.order - b.order;
         });
@@ -58,7 +76,15 @@ export let ConsolePage = function(site, page) {
         return user.atLeast(this.minimumRole(user));
     }
 
-    this.minimumRole = function(user) {
+	/**
+     * Compute minimum role to be able to access this page.
+     *
+     * The minimum role is determined by what is specified for
+     * this page plus any pages linked to by this page.
+	 * @param user
+	 * @returns {*}
+	 */
+	this.minimumRole = function(user) {
         let roleLeast = this.atLeast;
         if(roleLeast === Object(roleLeast)) {
             roleLeast = site.permissions.atLeast(roleLeast.tag, roleLeast.default);

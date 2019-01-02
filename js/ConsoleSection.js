@@ -1,10 +1,10 @@
-/**
- * @file
- * Console section: These are the <h2> page sections
- */
 
 import {ConsoleSectionOption} from './ConsoleSectionOption';
 
+/**
+ * Console section: These are the <h2> page sections
+ * @constructor
+ */
 export let ConsoleSection = function(site, section) {
     this.title = section.title;
     this.order = section.order;

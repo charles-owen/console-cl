@@ -1,21 +1,23 @@
+import {ConsolePage} from './ConsolePage';
+
 /**
- * @file Management of all console components
+ * Management of all console components
  *
  * Components are:
  * start scripts run when the console is started (addStart)
  * main Components added to every page (addMainComponent)
  * options Adds top-level menu options and options on pages (addOption)
- * routes Adds routes to the console directory (addRoute, addRoutes)
+ * routes Adds routes to the console directory (addRoute, addRoutes) *
+ * @param site
+ * @constructor
  */
-
-import {ConsolePage} from './ConsolePage.js';
-
 export let ConsoleComponents = function(site) {
 
     //
     // Start scripts are run when the console is started
     //
     let start = [];
+
 
     this.addStart = function(script) {
         start.push(script);
@@ -163,7 +165,7 @@ export let ConsoleComponents = function(site) {
         return routes;
     }
 
-    /**
+    /*
      * Given a list of items of the form {title: 'title', order: 'order'},
      * find an item with a given title.
      * @param list

@@ -30,20 +30,16 @@
       props: ['console', 'user'],
       data: function() {
           return {
-              homeLink: Site.root + '/'
+              homeLink: ''
           }
       },
-      components: {
-
-      },
       mounted() {
-
+      	  this.homeLink = this.$site.root + '/';
       },
       methods: {
           pageLink(page) {
-              return `${Site.root}/cl/console${page.route}`;
+              return `${this.$site.root}/cl/console${page.route}`;
           }
       }
-
   }
 </script>

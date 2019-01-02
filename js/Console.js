@@ -1,28 +1,33 @@
-/**
- * @file
- * Object that is the main console page.
- */
-
 import {ConsoleComponents} from './ConsoleComponents';
 import {ConsoleTables} from './ConsoleTables'
 import {ConsoleComponent} from './ConsoleComponent';
 import NavComponent from './NavComponent.vue';
 import NotFoundComponent from './NotFoundComponent.vue';
 
+/**
+ * Object that represents the site console.
+ * @param {Site} site The site object
+ * @constructor
+ */
 export const Console = function(site) {
 
-    // This property makes it possible to change the console titles
-    this.title = 'Site Console';
+	/** This property makes it possible to change the console title
+     * @memberOf Console */
+	this.title = 'Site Console';
 
-    // The console components are the installed components
-    // like the users editor or table creation.
+    /** The console components are installed components
+     * like the users editor or table creation. */
     this.components = new ConsoleComponents(site);
 
-    // The console tables component keeps track of the
-    // database tables we may need to create
+    /** The console tables component keeps track of the
+     * database tables we may need to create */
     this.tables = new ConsoleTables();
 
-    this.start = function(element) {
+	/**
+     * Start the console system.
+	 * @param element Element we put the console VUE into
+	 */
+	this.start = function(element) {
         this.components.sort();
         this.components.start(this);
 
@@ -142,7 +147,7 @@ export const Console = function(site) {
                 isAdmin: function() {
                     return admin;
                 },
-                /**
+                /*
                  * Set the site title. This can be used from
                  * the child Vue's using this.$parent.setTitle('')
                  * @param title Title to set

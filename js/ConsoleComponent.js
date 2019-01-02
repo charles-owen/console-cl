@@ -1,9 +1,8 @@
 /**
- * @file
  * Components that represent a console page.
+ * @constructor
  */
-
-export let ConsoleComponent = function(console, site, user, page) {
+export const ConsoleComponent = function(console, site, user, page) {
     this.template = `<div id="cl-console-main"><div class="content">`;
 
     let components = {};
