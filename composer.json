@@ -16,7 +16,7 @@
   },
   "require": {
     "cl/site": "^2.1",
-    "cl/users": "^2.0"
+    "cl/users": "^2.1"
   },
   "repositories": [
     {
