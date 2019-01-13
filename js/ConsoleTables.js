@@ -4,7 +4,11 @@
  */
 export let ConsoleTables = function() {
 
-    this.tables = [];
+    this.tables = [{
+        title: 'Site',
+        order: 0,
+        api: '/api/site/tables'
+    }];
 
     this.add = function(table) {
         this.tables.push(table);
