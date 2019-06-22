@@ -50,6 +50,9 @@
               }
 
 	          this.$site.console.components.removeNav2(this, item);
+          },
+          timeRelativeUNIX(time, currentTime, format) {
+              return this.$site.TimeFormatter.relativeUNIX(time, currentTime, format);
           }
       },
       created() {
