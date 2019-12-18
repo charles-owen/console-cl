@@ -6,6 +6,7 @@
      *
      * Provides:
      * nav2 menu support with automatic removal.
+     *
      * @alias ConsoleComponentBase
      * @constructor
      */
