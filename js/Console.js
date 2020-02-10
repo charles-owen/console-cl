@@ -10,10 +10,10 @@ import NotFoundComponent from './NotFoundComponent.vue';
  * @constructor
  */
 export const Console = function(site) {
-
 	/** This property makes it possible to change the console title
      * @memberOf Console */
 	this.title = 'Site Console';
+
 
     /** The console components are installed components
      * like the users editor or table creation. */
