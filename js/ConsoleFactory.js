@@ -1,5 +1,6 @@
 import {Console} from './Console';
 import TablesComponent from './TablesComponent.vue';
+import ConsoleComponentBase from './ConsoleComponentBase.vue';
 
 /**
  * Factory to create the Console object
@@ -38,6 +39,8 @@ ConsoleFactory.create = function(site) {
             siteConsole.start(element);
         }
     });
+
+    site.ConsoleComponentBase = ConsoleComponentBase;
 
     return siteConsole;
 }
