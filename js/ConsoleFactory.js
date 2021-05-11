@@ -17,12 +17,12 @@ ConsoleFactory.create = function(site) {
 
     // Add standard options
     siteConsole.components.addOption({
-        atLeast: Users.User.STAFF,
+        atLeast: Site.User.STAFF,
         page: {title: 'Main', route: '', order: 1},
     });
 
     siteConsole.components.addOption({
-        atLeast: Users.User.ADMIN,
+        atLeast: Site.User.ADMIN,
         page: {title: 'Management', route: '/management', order: 10},
         section: {title: 'Site Management', order: 1},
         title: 'Tables',
