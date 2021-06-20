@@ -15,8 +15,8 @@
     }
   },
   "require": {
-    "cl/site": "^2.3.0",
-    "cl/users": "^2.3.0"
+    "cl/site": "^2.3.1",
+    "cl/users": "^2.3.1"
   },
   "repositories": [
     {
@@ -26,7 +26,7 @@
   ],
   "extra": {
     "branch-alias": {
-      "dev-master": "2.2.x-dev"
+      "dev-master": "2.3.x-dev"
     }
   }
 }
