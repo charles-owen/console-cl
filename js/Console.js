@@ -3,6 +3,7 @@ import {ConsoleTables} from './ConsoleTables'
 import {ConsoleComponent} from './ConsoleComponent';
 import NavComponent from './NavComponent.vue';
 import NotFoundComponent from './NotFoundComponent.vue';
+import { createRouter, createWebHistory } from 'vue-router'
 
 /**
  * Object that represents the site console.
@@ -111,9 +112,14 @@ export const Console = function(site) {
         const Header = site.info.header.component();
         const Footer = site.info.footer.component();
 
-        const router = new site.VueRouter({
+        // const router = new site.VueRouter({
+        //     routes: routes,
+        //     mode: 'history'
+        // })
+
+         const router = createRouter({
+            history: createWebHistory(),
             routes: routes,
-            mode: 'history'
         })
 
         const components = {
