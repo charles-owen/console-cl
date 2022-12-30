@@ -112,12 +112,7 @@ export const Console = function(site) {
         const Header = site.info.header.component();
         const Footer = site.info.footer.component();
 
-        // const router = new site.VueRouter({
-        //     routes: routes,
-        //     mode: 'history'
-        // })
-
-         const router = createRouter({
+        const router = createRouter({
             history: createWebHistory(),
             routes: routes,
         })
