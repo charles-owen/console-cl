@@ -11,13 +11,13 @@
     <div v-if="console.components.nav2.length > 0">
       <div class="nav2">
         <div class="left">
-          <component v-if="console.components.nav2left" :is="console.components.nav2left"></component>
+          <component v-if="console.components.nav2left" :is="toRaw(console.components.nav2left)"></component>
         </div>
         <div class="center">
           <div v-for="c in console.components.nav2"><component :is="toRaw(c.component)" :short="console.components.nav2.length > 2"></component></div>
         </div>
         <div class="right">
-          <component v-if="console.components.nav2right" :is="console.components.nav2right"></component>
+          <component v-if="console.components.nav2right" :is="toRaw(console.components.nav2right)"></component>
         </div>
       </div>
     </div>

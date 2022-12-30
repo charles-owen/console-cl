@@ -32,13 +32,13 @@ import Dialog from 'dialog-cl';
 export default {
     data: function() {
         return {
-            tables: this.$site.console.tables.tables,
+            tables: this.$root.console.tables.tables,
             results: ''
         }
     },
     mounted() {
         this.$root.setTitle(': Database Tables');
-	      this.$site.console.tables.tables.sort(function(a, b) {
+	      this.$root.console.tables.tables.sort(function(a, b) {
             return a.order - b.order;
         })
     },
