@@ -1,8 +1,8 @@
 /**
- * Components that represent a console page.
+ * Component for the main console page
  * @constructor
  */
-export const ConsoleComponent = function(console, site, user, page) {
+export const ConsoleComponent = function(consoleObj, site, user, page) {
     this.template = `<div id="cl-console-main"><div class="content">`;
 
     let components = {};
@@ -52,9 +52,9 @@ export const ConsoleComponent = function(console, site, user, page) {
 
     this.mounted = function() {
         if(page.title === 'Main') {
-            this.$parent.setTitle('');
+            this.$root.setTitle('');
         } else {
-            this.$parent.setTitle(': ' + page.title);
+            this.$root.setTitle(': ' + page.title);
         }
 
     }

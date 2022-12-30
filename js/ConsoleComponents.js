@@ -56,7 +56,6 @@ export let ConsoleComponents = function(site) {
         this.nav2.sort((a, b) => {
             return a.order - b.order;
         });
-
         return component;
     }
 
@@ -70,9 +69,9 @@ export let ConsoleComponents = function(site) {
         }
 
         for(let i=0; i<this.nav2.length; i++) {
-            if(this.nav2[i].component === component) {
+            if(this.nav2[i].component.template === component.template) {
                 this.nav2.splice(i, 1);
-                vue.$set(this, 'nav2', this.nav2);
+             //   vue.$set(this, 'nav2', this.nav2);
                 return;
             }
         }
@@ -93,7 +92,7 @@ export let ConsoleComponents = function(site) {
             return a.order - b.order;
         });
 
-        vue.$set(this, 'nav2', this.nav2);
+     //   vue.$set(this, 'nav2', this.nav2);
         return component;
     }
 

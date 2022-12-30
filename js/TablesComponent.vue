@@ -37,7 +37,7 @@ export default {
         }
     },
     mounted() {
-        this.$parent.setTitle(': Database Tables');
+        this.$root.setTitle(': Database Tables');
 	      this.$site.console.tables.tables.sort(function(a, b) {
             return a.order - b.order;
         })

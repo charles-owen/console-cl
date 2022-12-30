@@ -1,8 +1,8 @@
-import {ConsoleComponents} from './ConsoleComponents';
+import {ConsoleComponents} from './ConsoleComponents'
 import {ConsoleTables} from './ConsoleTables'
-import {ConsoleComponent} from './ConsoleComponent';
-import NavComponent from './NavComponent.vue';
-import NotFoundComponent from './NotFoundComponent.vue';
+import {ConsoleComponent} from './ConsoleComponent'
+import NavComponent from './NavComponent.vue'
+import NotFoundComponent from './NotFoundComponent.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 /**
@@ -11,10 +11,11 @@ import { createRouter, createWebHistory } from 'vue-router'
  * @constructor
  */
 export const Console = function(site) {
-	/** This property makes it possible to change the console title
+    const VueHelper = site.VueHelper
+
+    /** This property makes it possible to change the console title
      * @memberOf Console */
 	this.title = 'Site Console';
-
 
     /** The console components are installed components
      * like the users editor or table creation. */
@@ -79,7 +80,6 @@ export const Console = function(site) {
                     path: site.root + '/cl/console' + page.route, component: component
                 })
 
-
                 page.sections.forEach((section) => {
                     section.options.forEach((option) => {
                         if(option.available(user)) {
@@ -107,7 +107,7 @@ export const Console = function(site) {
 
         });
 
-        routes.push({ path: '*', component: NotFoundComponent });
+        routes.push({ path: '/:pathMatch(.*)', component: NotFoundComponent });
 
         const Header = site.info.header.component();
         const Footer = site.info.footer.component();
@@ -132,12 +132,12 @@ export const Console = function(site) {
         let siteTitle = this.title;
         let Console = this;
 
-        this.masterVue = new site.Vue({
-            el: element,
-            store,      // Inject the store
-            site,       // Inject site, so $site is available for all children
+        const app = VueHelper.createApp({
+            //el: element,
+            //store,      // Inject the store
+            //site,       // Inject site, so $site is available for all children
             template: template,
-            router,
+            //router,
             data: function() {
                 return {
                     title: siteTitle,
@@ -145,17 +145,15 @@ export const Console = function(site) {
                     user: user
                 }
             },
-            props: {
-
-            },
             components: components,
             methods: {
                 isAdmin: function() {
                     return admin;
                 },
+
                 /*
                  * Set the site title. This can be used from
-                 * the child Vue's using this.$parent.setTitle('')
+                 * the child Vue's using this.$root.setTitle(title)
                  * @param title Title to set
                  */
                 setTitle(title) {
@@ -169,6 +167,16 @@ export const Console = function(site) {
             mounted() {
 	            new site.StickyNav('div.cl-console nav');
             }
+        })
+
+        app.config.globalProperties.$site = site
+        app.config.globalProperties.$store = store
+        app.use(router)
+
+        this.masterVue = app;
+
+        router.isReady().then(() => {
+            VueHelper.mount(app, element)
         })
     }
 }

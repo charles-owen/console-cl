@@ -7,7 +7,7 @@
 <script>
     module.exports = {
         mounted() {
-            this.$parent.setTitle('Page does not exist...');
+            this.$root.setTitle('Page does not exist...');
         }
     }
 </script>
