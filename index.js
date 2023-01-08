@@ -8,3 +8,5 @@ if(!Site.Console) {
     Site.Console = Console
 }
 
+export {ConsoleComponentBase}
+
