@@ -41,7 +41,7 @@ export const Console = function(site) {
         //
 
         let template = `<div class="cl-console"><site-header :title="title">
-<console-nav :console="console" :user="user"></console-nav>
+<console-nav :courseconsole="courseconsole" :user="user"></console-nav>
 </site-header>`;
 
         this.components.main.forEach((component) => {
@@ -136,6 +136,7 @@ export const Console = function(site) {
             data: function() {
                 return {
                     title: siteTitle,
+                    courseconsole: Console,
                     console: Console,
                     user: user
                 }
@@ -143,7 +144,7 @@ export const Console = function(site) {
             components: components,
             methods: {
                 isAdmin: function() {
-                    return admin;
+                    return admin
                 },
 
                 /*
@@ -152,15 +153,15 @@ export const Console = function(site) {
                  * @param title Title to set
                  */
                 setTitle(title) {
-                    this.title = siteTitle + title;
-                    document.title = Site.info.siteName + ' ' + siteTitle + title;
+                    this.title = siteTitle + title
+                    document.title = Site.info.siteName + ' ' + siteTitle + title
                 }
             },
             created() {
-                this.setTitle('');
+                this.setTitle('')
             },
             mounted() {
-	            new site.StickyNav('div.cl-console nav');
+	            new site.StickyNav('div.cl-console nav')
             }
         })
 

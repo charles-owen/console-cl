@@ -8,16 +8,16 @@
         </li>
       </ul>
     </div>
-    <div v-if="console.components.nav2.length > 0">
+    <div v-if="courseconsole.components.nav2.length > 0">
       <div class="nav2">
         <div class="left">
-          <component v-if="console.components.nav2left" :is="toRaw(console.components.nav2left)"></component>
+          <component v-if="courseconsole.components.nav2left" :is="toRaw(courseconsole.components.nav2left)"></component>
         </div>
         <div class="center">
-          <div v-for="c in console.components.nav2"><component :is="toRaw(c.component)" :short="console.components.nav2.length > 2"></component></div>
+          <div v-for="c in courseconsole.components.nav2"><component :is="toRaw(c.component)" :short="courseconsole.components.nav2.length > 2"></component></div>
         </div>
         <div class="right">
-          <component v-if="console.components.nav2right" :is="toRaw(console.components.nav2right)"></component>
+          <component v-if="courseconsole.components.nav2right" :is="toRaw(courseconsole.components.nav2right)"></component>
         </div>
       </div>
     </div>
@@ -29,7 +29,7 @@
 import {toRaw} from 'vue'
 
 export default {
-  props: ['console', 'user'],
+  props: ['courseconsole', 'user'],
   data: function () {
     return {
       homeLink: ''
@@ -42,7 +42,7 @@ export default {
      */
     pages() {
       let ret = []
-      for (let page of this.console.components.pages) {
+      for (let page of this.courseconsole.components.pages) {
         if (page.available(this.user)) {
           ret.push(page)
         }
@@ -59,21 +59,21 @@ export default {
      */
     nav2() {
       let ret = []
-      for (let nav of this.console.components.nav2) {
+      for (let nav of this.courseconsole.components.nav2) {
         ret.push(toRaw(nav.component))
       }
       return ret
     },
     short() {
-      return this.console.components.nav2.length > 2
+      return this.courseconsole.components.nav2.length > 2
     }
   },
   mounted() {
-    this.homeLink = this.$site.root + '/';
+    this.homeLink = this.$site.root + '/'
   },
   methods: {
     pageLink(page) {
-      return `${this.$site.root}/cl/console${page.route}`;
+      return `${this.$site.root}/cl/console${page.route}`
     },
     toRaw(c) {
       return toRaw(c)
